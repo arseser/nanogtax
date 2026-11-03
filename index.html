@@ -26,11 +26,21 @@
         .hero p { font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto 40px; }
         .hero .btn-book { padding: 15px 40px; font-size: 1.1rem; display: inline-block; text-decoration: none; }
 
+        /* О нас */
+        .about { padding: 80px 0; background: #fff; }
+        .about h2 { text-align: center; font-size: 2rem; font-weight: 400; margin-bottom: 50px; color: #3a3a3a; }
+        .about-content { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
+        .about-text { flex: 1 1 500px; }
+        .about-text p { margin-bottom: 20px; color: #555; font-size: 1.1rem; }
+        .about-text p strong { color: #3a3a3a; }
+        .about-text .btn-book { display: inline-block; margin-top: 20px; padding: 15px 40px; text-decoration: none; }
+        .about-image { flex: 1 1 400px; background: #e8e4e0; height: 350px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.9rem; }
+
         /* Преимущества */
-        .features { padding: 80px 0; background: #fff; }
+        .features { padding: 80px 0; background: #f9f8f7; }
         .features h2 { text-align: center; font-size: 2rem; font-weight: 400; margin-bottom: 50px; color: #3a3a3a; }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .feature-item { background: #f9f8f7; padding: 40px 30px; text-align: center; border-radius: 10px; transition: transform 0.3s; }
+        .feature-item { background: #fff; padding: 40px 30px; text-align: center; border-radius: 10px; transition: transform 0.3s; }
         .feature-item:hover { transform: translateY(-5px); }
         .feature-icon { font-size: 2.5rem; margin-bottom: 20px; }
         .feature-item h3 { font-weight: 500; margin-bottom: 10px; color: #3a3a3a; }
@@ -77,6 +87,7 @@
             nav a:not(.btn-book) { display: none; }
             .service-row { flex-direction: column; align-items: flex-start; }
             .service-row .price { margin-top: 5px; }
+            .about-content { flex-direction: column; }
         }
     </style>
 </head>
@@ -87,6 +98,7 @@
         <div class="container header-inner">
             <div class="logo">На <span>ногтях</span></div>
             <nav>
+                <a href="#about">О нас</a>
                 <a href="#services">Услуги</a>
                 <a href="#portfolio">Портфолио</a>
                 <a href="#contacts">Контакты</a>
@@ -101,6 +113,23 @@
             <h1>Идеальный маникюр и педикюр<br><strong>за 40–75 минут</strong></h1>
             <p>Скорость и качество без отслоек. Успейте даже в обеденный перерыв.</p>
             <a href="https://n1348500.yclients.ru/" class="btn-book" target="_blank">Записаться онлайн</a>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>О нас</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Добро пожаловать в студию <strong>«На ногтях»</strong>! Мы находимся в самом центре Оренбурга, по адресу ул. Карагандинская, 49/1 (ТД «Вояж»).</p>
+                    <p>Наш главный принцип — <strong>скорость и качество</strong>. Мы делаем маникюр всего за 40–75 минут, что позволяет вам успеть на встречу или вернуться на работу в обеденный перерыв. При этом покрытие радует глаз неделями — <strong>без отслоек и сколов</strong>.</p>
+                    <p>Наш кабинет — это воздушное пространство с панорамными окнами и белыми тюлями, где преобладает белый цвет с вставками серого мрамора. Здесь приятно расслабиться и привести руки в порядок.</p>
+                    <p>Мы также делаем педикюр — такой же быстрый и качественный, как маникюр. А для удобства наших клиентов доступна <strong>онлайн-запись</strong>.</p>
+                    <a href="https://n1348500.yclients.ru/" class="btn-book" target="_blank">Записаться онлайн</a>
+                </div>
+                <div class="about-image">Фото кабинета</div>
+            </div>
         </div>
     </section>
 
