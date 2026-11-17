@@ -12,7 +12,6 @@ HTML_PAGE = """
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>На ногтях — маникюр и педикюр в центре Оренбурга</title>
     <meta name="description" content="Студия маникюра и педикюра «На ногтях» в Оренбурге. Скорость, стерильность, светлый кабинет. Онлайн-запись.">
-    <!-- ЗАМЕНИТЬ: favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>Н</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +56,6 @@ HTML_PAGE = """
             text-decoration: none;
             white-space: nowrap;
         }
-        /* ЗАМЕНИТЬ: логотип по вывеске. Сейчас текстом, без бежевого */
         nav { display: flex; align-items: center; gap: 28px; }
         nav a {
             text-decoration: none; color: var(--graphite);
@@ -95,7 +93,6 @@ HTML_PAGE = """
             background:
                 linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
                 url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;
-            /* ЗАМЕНИТЬ: мраморная текстура на своё фото, если нужно */
         }
         .hero-inner {
             display: grid;
@@ -132,7 +129,6 @@ HTML_PAGE = """
             border-radius: var(--radius);
             display: flex; align-items: center; justify-content: center;
             color: var(--muted); font-size: 0.8rem; letter-spacing: 2px;
-            /* ЗАМЕНИТЬ: реальное фото кабинета (окно, тюль, мрамор) */
         }
         .facts {
             display: grid;
@@ -178,7 +174,6 @@ HTML_PAGE = """
             border-radius: var(--radius);
             display: flex; align-items: center; justify-content: center;
             color: var(--muted); font-size: 0.8rem; letter-spacing: 2px;
-            /* ЗАМЕНИТЬ: фото кабинета слева */
         }
         .about-text p { color: var(--graphite); font-size: 1rem; margin-bottom: 16px; }
         .about-text p:last-of-type { margin-bottom: 0; }
@@ -275,19 +270,6 @@ HTML_PAGE = """
 
         /* Работы — скрыт до готовых фото */
         .portfolio { background: var(--white); display: none; }
-        /* Чтобы включить блок, уберите display: none и раскомментируйте разметку ниже */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-        .portfolio-item {
-            aspect-ratio: 1/1;
-            background: var(--marble);
-            border-radius: var(--radius);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--muted); font-size: 0.75rem; letter-spacing: 2px;
-        }
 
         /* Отзывы */
         .reviews { background: var(--offwhite); }
@@ -319,9 +301,8 @@ HTML_PAGE = """
             margin-bottom: 12px;
         }
         .review-card .review-name { font-weight: 500; color: var(--graphite); }
-        .review-card .review-date { font-size: 0.75rem; color: var(--muted); }
+        .review-card .review-status { font-size: 0.75rem; color: var(--muted); }
         .review-card .review-text { font-size: 0.9rem; color: var(--graphite); }
-        /* ЗАМЕНИТЬ: реальные отзывы с Яндекс Карт. Сейчас заглушки */
         .reviews-cta { text-align: center; margin-top: 36px; }
         .reviews-cta a {
             font-size: 0.85rem; color: var(--graphite);
@@ -443,8 +424,7 @@ HTML_PAGE = """
                 <a href="#contacts">Контакты</a>
                 <a href="https://n1348500.yclients.ru/" class="btn" target="_blank" rel="noopener">Записаться</a>
             </nav>
-            <!-- ЗАМЕНИТЬ: реальный телефон -->
-            <a href="tel:+70000000000" class="header-phone">+7 (000) 000-00-00</a>
+            <a href="tel:+79619436282" class="header-phone">+7 (961) 943-62-82</a>
         </div>
     </header>
 
@@ -457,8 +437,7 @@ HTML_PAGE = """
                     <p>Светлый кабинет с панорамными окнами, стерильные инструменты и аккуратное покрытие.</p>
                     <div class="hero-actions">
                         <a href="https://n1348500.yclients.ru/" class="btn" target="_blank" rel="noopener">Записаться онлайн</a>
-                        <!-- ЗАМЕНИТЬ: ссылка на Max -->
-                        <a href="#" class="link-max">Написать в Max</a>
+                        <a href="https://max.ru/u/f9LHodD0cOJ-bX6hYDR-apIXmyZo1_Ld9ZYwm9eiteKL6U75nrNiCPIacWo" class="link-max" target="_blank" rel="noopener">Написать в Max</a>
                     </div>
                 </div>
                 <div class="hero-image">ФОТО КАБИНЕТА</div>
@@ -478,9 +457,10 @@ HTML_PAGE = """
             <div class="about-content">
                 <div class="about-image">ФОТО КАБИНЕТА</div>
                 <div class="about-text">
-                    <p>«На ногтях» — небольшая студия в центре Оренбурга. Мы работаем быстро и аккуратно: маникюр занимает 40–75 минут, покрытие держится без отслоек.</p>
-                    <p>В кабинете много света: панорамные окна, белые тюли и мраморные вставки. Здесь спокойно и не тесно.</p>
-                    <p>Инструменты проходят полную стерилизацию, материалы — проверенные бренды. Педикюр делаем так же внимательно, как маникюр.</p>
+                    <p>«На ногтях» — это небольшая студия в центре Оренбурга, где маникюр и педикюр занимают от 40 до 75 минут. Мы не растягиваем процедуру на полдня и не заставляем ждать: вы приходите к назначенному времени, а уходите с аккуратным покрытием, которое держится неделями.</p>
+                    <p>Кабинет наполнен светом: с двух сторон панорамные окна, белые тюли и мраморные вставки. Здесь нет спешки и суеты — только спокойная атмосфера, в которой приятно провести обеденный перерыв или вечер после работы.</p>
+                    <p>Мы внимательно относимся к стерильности: инструменты проходят полную обработку, материалы — только проверенных брендов. Педикюр делаем так же тщательно, как маникюр, уделяя внимание каждой детали.</p>
+                    <p>К нам приходят за скоростью, качеством и атмосферой — и возвращаются снова. Убедитесь сами: запишитесь онлайн или напишите в Max, и мы подберём удобное время.</p>
                 </div>
             </div>
         </div>
@@ -598,21 +578,20 @@ HTML_PAGE = """
             <h2 class="section-title">Отзывы</h2>
             <div class="reviews-rating">
                 <div class="num">4.7</div>
-                <div class="sub">23 отзыва на Яндекс Картах</div>
+                <div class="sub">16 отзывов на Яндекс Картах</div>
             </div>
             <div class="reviews-grid">
-                <!-- ЗАМЕНИТЬ: реальные отзывы с Яндекс Карт -->
                 <div class="review-card">
-                    <div class="review-head"><span class="review-name">Имя</span><span class="review-date">дата</span></div>
-                    <div class="review-text">Текст отзыва с Яндекс Карт, до 3 строк.</div>
+                    <div class="review-head"><span class="review-name">Гульнара Крушенова</span><span class="review-status">Знаток города 2 уровня</span></div>
+                    <div class="review-text">Мастер Светлана — настоящий профессионал! Маникюр выполнен безупречно: кутикула обработана идеально, покрытие ровное, без затёков, форма ногтей подобрана грамотно. Все инструменты стерильны, срок носки ногтей четыре недели. Очень довольна, рекомендую мастера!</div>
                 </div>
                 <div class="review-card">
-                    <div class="review-head"><span class="review-name">Имя</span><span class="review-date">дата</span></div>
-                    <div class="review-text">Текст отзыва с Яндекс Карт, до 3 строк.</div>
+                    <div class="review-head"><span class="review-name">Татьяна Мазалова</span><span class="review-status">Знаток города 2 уровня</span></div>
+                    <div class="review-text">Наконец-то я нашла своего мастера — это Светлана! Стоит отметить аккуратность, вежливость, чуткость и профессиональный уровень этого мастера. Светлана всегда готова предложить новое и подсказать что-то по уходу за ногтями. Скоро Новый год, приходите в эту студию к Светлане, успех гарантирован!</div>
                 </div>
                 <div class="review-card">
-                    <div class="review-head"><span class="review-name">Имя</span><span class="review-date">дата</span></div>
-                    <div class="review-text">Текст отзыва с Яндекс Карт, до 3 строк.</div>
+                    <div class="review-head"><span class="review-name">Катя С.</span><span class="review-status">Знаток города 3 уровня</span></div>
+                    <div class="review-text">Сегодня посетила салон красоты, мастера по маникюру Светлану. Ноготочки были обработаны быстро и качественно. Рекомендую. При первом посещении цена была снижена, что очень приятно. Мастер тактична и доброжелательна, можно посоветоваться. Спасибо.</div>
                 </div>
             </div>
             <div class="reviews-cta">
@@ -627,10 +606,8 @@ HTML_PAGE = """
             <p>Онлайн-запись открыта круглосуточно.</p>
             <div class="booking-actions">
                 <a href="https://n1348500.yclients.ru/" class="btn" target="_blank" rel="noopener">Записаться онлайн</a>
-                <!-- ЗАМЕНИТЬ: ссылка на Max -->
-                <a href="#" class="link-max">Написать в Max</a>
-                <!-- ЗАМЕНИТЬ: реальный телефон -->
-                <a href="tel:+70000000000" class="link-max">+7 (000) 000-00-00</a>
+                <a href="https://max.ru/u/f9LHodD0cOJ-bX6hYDR-apIXmyZo1_Ld9ZYwm9eiteKL6U75nrNiCPIacWo" class="link-max" target="_blank" rel="noopener">Написать в Max</a>
+                <a href="tel:+79619436282" class="link-max">+7 (961) 943-62-82</a>
             </div>
         </div>
     </section>
@@ -647,13 +624,11 @@ HTML_PAGE = """
                     </div>
                     <div class="contact-block">
                         <strong>Часы работы</strong>
-                        <!-- ЗАМЕНИТЬ: реальные часы -->
-                        <p>Пн–Сб 9:00–20:00<br>Вс — выходной</p>
+                        <p>Ежедневно 10:00–20:00</p>
                     </div>
                     <div class="contact-block">
                         <strong>Телефон</strong>
-                        <!-- ЗАМЕНИТЬ: реальный телефон -->
-                        <p><a href="tel:+70000000000">+7 (000) 000-00-00</a></p>
+                        <p><a href="tel:+79619436282">+7 (961) 943-62-82</a></p>
                     </div>
                     <div class="contact-block">
                         <strong>Онлайн-запись</strong>
@@ -676,8 +651,7 @@ HTML_PAGE = """
         <div class="container footer-inner">
             <a href="#" class="logo">На ногтях</a>
             <div>
-                <!-- ЗАМЕНИТЬ: реальный телефон -->
-                <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+                <a href="tel:+79619436282">+7 (961) 943-62-82</a>
             </div>
             <div>&copy; {{ year }} «На ногтях». Все права защищены.</div>
         </div>
@@ -686,7 +660,6 @@ HTML_PAGE = """
     <a href="https://n1348500.yclients.ru/" class="sticky-book" target="_blank" rel="noopener">Записаться</a>
 
     <script>
-        // Вкладки услуг
         document.querySelectorAll('.tab-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 var tab = btn.getAttribute('data-tab');
