@@ -223,13 +223,25 @@ HTML_PAGE = """
         .tab-panel { display: none; }
         .tab-panel.active { display: block; }
         .service-row {
-            display: flex; justify-content: space-between; align-items: baseline;
+            display: flex;
+            align-items: center;
+            gap: 16px;
             padding: 14px 0;
             border-bottom: 1px dotted var(--marble);
-            gap: 12px;
         }
-        .service-row .name { font-weight: 400; color: var(--graphite); flex: 1 1 auto; }
-        .service-row .meta { color: var(--muted); font-size: 0.8rem; font-weight: 300; }
+        .service-thumb {
+            flex: 0 0 56px;
+            width: 56px; height: 56px;
+            background: var(--marble);
+            border-radius: var(--radius);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--muted);
+            font-size: 0.6rem; letter-spacing: 1px;
+            object-fit: cover;
+        }
+        .service-info { flex: 1 1 auto; display: flex; flex-direction: column; }
+        .service-info .name { font-weight: 400; color: var(--graphite); }
+        .service-info .meta { color: var(--muted); font-size: 0.8rem; font-weight: 300; }
         .service-row .price {
             font-weight: 600; color: var(--graphite);
             white-space: nowrap;
@@ -250,6 +262,17 @@ HTML_PAGE = """
             position: absolute; top: 12px; right: 12px;
             font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase;
             color: var(--muted);
+        }
+        .complex-thumb {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: var(--marble);
+            border-radius: var(--radius);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--muted);
+            font-size: 0.7rem; letter-spacing: 1px;
+            margin-bottom: 14px;
+            object-fit: cover;
         }
         .complex-card h4 {
             font-family: 'Cormorant Garamond', serif;
@@ -502,45 +525,154 @@ HTML_PAGE = """
             </div>
 
             <div class="tab-panel active" id="tab-manicure">
-                <div class="service-row"><span class="name">Маникюр + укрепление гелем <span class="meta">1 ч 30 мин</span></span><span class="price">1 600 ₽</span></div>
-                <div class="service-row"><span class="name">Гигиенический маникюр <span class="meta">30 мин</span></span><span class="price">700–800 ₽</span></div>
-                <div class="service-row"><span class="name">Маникюр + гель-лак + френч <span class="meta">1 ч 30 мин</span></span><span class="price">1 800 ₽</span></div>
-                <div class="service-row"><span class="name">Маникюр + покрытие + дизайн <span class="meta">1 ч 40 мин</span></span><span class="price">1 650–2 000 ₽</span></div>
-                <div class="service-row"><span class="name">Мужской маникюр <span class="meta">1 ч</span></span><span class="price">700 ₽</span></div>
-                <div class="service-row"><span class="name">Снятие покрытия <span class="meta">30 мин</span></span><span class="price">200 ₽</span></div>
-                <div class="service-row"><span class="name">Снятие покрытия + гигиенический маникюр <span class="meta">1 ч</span></span><span class="price">800 ₽</span></div>
-                <div class="service-row"><span class="name">Моделирование (исправление клюющих и скрученных ногтей) <span class="meta">2 ч</span></span><span class="price">1 800–2 000 ₽</span></div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Маникюр + укрепление гелем</span>
+                        <span class="meta">1 ч 30 мин · Комбинированный маникюр с укреплением гелем и покрытием гель-лак</span>
+                    </div>
+                    <span class="price">1 600 ₽</span>
+                </div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Гигиенический маникюр</span>
+                        <span class="meta">30 мин</span>
+                    </div>
+                    <span class="price">700–800 ₽</span>
+                </div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Маникюр + гель-лак + френч</span>
+                        <span class="meta">1 ч 30 мин · Комбинированный маникюр, укрепление гелем, дизайн френч</span>
+                    </div>
+                    <span class="price">1 800 ₽</span>
+                </div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Маникюр + покрытие + дизайн</span>
+                        <span class="meta">1 ч 40 мин</span>
+                    </div>
+                    <span class="price">1 650–2 000 ₽</span>
+                </div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Мужской маникюр</span>
+                        <span class="meta">1 ч</span>
+                    </div>
+                    <span class="price">700 ₽</span>
+                </div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Снятие покрытия</span>
+                        <span class="meta">30 мин</span>
+                    </div>
+                    <span class="price">200 ₽</span>
+                </div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Снятие покрытия + гигиенический маникюр</span>
+                        <span class="meta">1 ч</span>
+                    </div>
+                    <span class="price">800 ₽</span>
+                </div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Моделирование (исправление клюющих и скрученных ногтей)</span>
+                        <span class="meta">2 ч</span>
+                    </div>
+                    <span class="price">1 800–2 000 ₽</span>
+                </div>
             </div>
 
             <div class="tab-panel" id="tab-pedicure">
-                <div class="service-row"><span class="name">Аппаратный педикюр + уход <span class="meta">1 ч 30 мин</span></span><span class="price">1 800 ₽</span></div>
-                <div class="service-row"><span class="name">Аппаратный педикюр + покрытие гель-лаком <span class="meta">1 ч</span></span><span class="price">2 100 ₽</span></div>
-                <div class="service-row"><span class="name">Экспресс педикюр <span class="meta">30 мин</span></span><span class="price">1 200 ₽</span></div>
-                <div class="service-row"><span class="name">Экспресс педикюр с покрытием гель-лак <span class="meta">45 мин</span></span><span class="price">1 500 ₽</span></div>
-                <div class="service-row"><span class="name">Мужской педикюр <span class="meta">1 ч</span></span><span class="price">2 000 ₽</span></div>
-                <div class="service-row"><span class="name">Снятие покрытия <span class="meta">20 мин</span></span><span class="price">200 ₽</span></div>
-                <div class="service-row"><span class="name">Снятие покрытия + экспресс педикюр <span class="meta">45 мин</span></span><span class="price">1 300 ₽</span></div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Аппаратный педикюр + уход</span>
+                        <span class="meta">1 ч 30 мин</span>
+                    </div>
+                    <span class="price">1 800 ₽</span>
+                </div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Аппаратный педикюр + покрытие гель-лаком</span>
+                        <span class="meta">1 ч</span>
+                    </div>
+                    <span class="price">2 100 ₽</span>
+                </div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Экспресс педикюр</span>
+                        <span class="meta">30 мин</span>
+                    </div>
+                    <span class="price">1 200 ₽</span>
+                </div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Экспресс педикюр с покрытием гель-лак</span>
+                        <span class="meta">45 мин</span>
+                    </div>
+                    <span class="price">1 500 ₽</span>
+                </div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Мужской педикюр</span>
+                        <span class="meta">1 ч</span>
+                    </div>
+                    <span class="price">2 000 ₽</span>
+                </div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Снятие покрытия</span>
+                        <span class="meta">20 мин</span>
+                    </div>
+                    <span class="price">200 ₽</span>
+                </div>
+                <div class="service-row">
+                    <div class="service-thumb">ФОТО</div>
+                    <div class="service-info">
+                        <span class="name">Снятие покрытия + экспресс педикюр</span>
+                        <span class="meta">45 мин</span>
+                    </div>
+                    <span class="price">1 300 ₽</span>
+                </div>
             </div>
 
             <div class="tab-panel" id="tab-complex">
                 <div class="complexes-grid">
                     <div class="complex-card">
+                        <div class="complex-thumb">ФОТО</div>
                         <h4>S</h4>
                         <div class="desc">Маникюр + покрытие и педикюр пальчиков с покрытием</div>
                         <div class="price">3 100 ₽</div>
                     </div>
                     <div class="complex-card">
+                        <div class="complex-thumb">ФОТО</div>
                         <h4>M</h4>
                         <div class="desc">Моделирование и экспресс педикюр с покрытием</div>
                         <div class="price">3 300–3 500 ₽</div>
                     </div>
                     <div class="complex-card">
                         <span class="badge">Популярный</span>
+                        <div class="complex-thumb">ФОТО</div>
                         <h4>L</h4>
                         <div class="desc">Маникюр с укреплением и полный педикюр с покрытием</div>
                         <div class="price">3 700 ₽</div>
                     </div>
                     <div class="complex-card">
+                        <div class="complex-thumb">ФОТО</div>
                         <h4>XL</h4>
                         <div class="desc">Моделирование и полный педикюр с покрытием</div>
                         <div class="price">3 900–4 100 ₽</div>
