@@ -123,39 +123,70 @@ HTML_PAGE = """
         .map-wrap { aspect-ratio:16/10; background:var(--marble); border-radius:var(--radius); overflow:hidden; }
         .map-wrap iframe { width:100%; height:100%; border:0; display:block; }
 
-        footer { background:var(--graphite); color:var(--marble); padding:24px 0; font-size:0.8rem; }
-        .footer-inner { display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
-        .footer-inner .logo { color:#fff; font-size:1.2rem; }
-        .footer-inner a { color:var(--marble); text-decoration:none; }
+        footer { background:var(--graphite); color:var(--marble); padding:28px 0; font-size:0.8rem; }
+        .footer-inner { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+        .footer-inner .logo { color:#fff; font-size:1.2rem; letter-spacing:2px; }
+        .footer-inner a { color:var(--marble); text-decoration:none; transition:color 0.3s; }
         .footer-inner a:hover { color:#fff; }
+        .footer-inner .footer-phone { white-space:nowrap; }
+        .footer-inner .footer-copy { font-size:0.75rem; color:#b8b8b8; }
 
         .sticky-book { display:none; position:fixed; bottom:0; left:0; right:0; background:var(--graphite); color:#fff; text-align:center; padding:14px; font-size:0.85rem; letter-spacing:1px; text-transform:uppercase; text-decoration:none; z-index:200; }
 
         @media (max-width:900px) {
-            .hero-inner { grid-template-columns:1fr; gap:40px; }
+            .hero-inner { grid-template-columns:1fr; gap:32px; }
+            .hero { padding:60px 0 0; }
             .hero h1 { font-size:2.4rem; }
             .hero-image { aspect-ratio:16/10; }
-            .facts { grid-template-columns:1fr; }
-            .fact { border-right:none; border-bottom:1px solid var(--marble); }
+            .hero p { max-width:100%; }
+            .facts { grid-template-columns:1fr; margin-top:40px; }
+            .fact { border-right:none; border-bottom:1px solid var(--marble); padding:18px 0; }
             .fact:last-child { border-bottom:none; }
-            .about-content { grid-template-columns:1fr; }
+            .about-content { grid-template-columns:1fr; gap:32px; }
             .about-image { aspect-ratio:16/10; }
             .features-grid { grid-template-columns:1fr; gap:28px; }
             .complexes-grid { grid-template-columns:repeat(2,1fr); }
             .reviews-grid { grid-template-columns:1fr; }
-            .contacts-inner { grid-template-columns:1fr; }
+            .contacts-inner { grid-template-columns:1fr; gap:32px; }
             .portfolio-grid { grid-template-columns:repeat(2,1fr); }
+            .map-wrap { aspect-ratio:4/3; }
             nav a:not(.btn) { display:none; }
             .header-phone { display:none; }
             .sticky-book { display:block; }
             body { padding-bottom:56px; }
+            section { padding:60px 0; }
+            .section-title { font-size:2.2rem; margin-bottom:36px; }
+            .booking { padding:60px 0; }
+            .booking h2 { font-size:2rem; }
+            .footer-inner { flex-direction:column; text-align:center; gap:12px; }
+            .footer-inner .logo { font-size:1.3rem; }
         }
         @media (max-width:600px) {
-            .hero { padding:60px 0 0; }
-            .hero h1 { font-size:2rem; }
-            .section-title { font-size:2rem; }
-            section { padding:60px 0; }
+            .container { padding:0 18px; }
+            .hero { padding:50px 0 0; }
+            .hero h1 { font-size:1.9rem; }
+            .hero-actions { gap:14px; }
+            .hero-actions .btn { padding:12px 22px; }
+            .section-title { font-size:1.8rem; }
+            section { padding:50px 0; }
             .complexes-grid { grid-template-columns:1fr; }
+            .portfolio-grid { grid-template-columns:1fr; }
+            .service-row { gap:12px; }
+            .service-thumb { flex:0 0 48px; width:48px; height:48px; }
+            .service-info .name { font-size:0.92rem; }
+            .service-info .meta { font-size:0.75rem; }
+            .service-row .price { font-size:0.9rem; }
+            .tabs { gap:6px; }
+            .tab-btn { padding:8px 14px; font-size:0.72rem; }
+            .review-card { padding:20px; }
+            .contact-block strong { font-size:1.15rem; }
+            .booking h2 { font-size:1.7rem; }
+            .booking-actions { flex-direction:column; gap:14px; }
+            .sticky-book { padding:15px; font-size:0.8rem; }
+            footer { padding:22px 0; }
+            .footer-inner { gap:10px; }
+            .footer-inner .logo { font-size:1.2rem; }
+            .footer-inner .footer-copy { font-size:0.7rem; }
         }
     </style>
 </head>
@@ -503,8 +534,8 @@ HTML_PAGE = """
     <footer>
         <div class="container footer-inner">
             <a href="#" class="logo">На ногтях</a>
-            <div><a href="tel:+79619436282">+7 (961) 943-62-82</a></div>
-            <div>&copy; {{ year }} «На ногтях». Все права защищены.</div>
+            <div class="footer-phone"><a href="tel:+79619436282">+7 (961) 943-62-82</a></div>
+            <div class="footer-copy">&copy; {{ year }} «На ногтях». Все права защищены.</div>
         </div>
     </footer>
 
