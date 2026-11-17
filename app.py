@@ -619,4 +619,91 @@ HTML_PAGE = """
                 <a href="https://yandex.ru/maps/org/na_nogtyakh/110317468223/" target="_blank" rel="noopener">Все отзывы на Яндекс Картах</a>
             </div>
         </div>
-   
+    </section>
+
+    <section class="booking">
+        <div class="container">
+            <h2>Запишитесь на удобное время</h2>
+            <p>Онлайн-запись открыта круглосуточно.</p>
+            <div class="booking-actions">
+                <a href="https://n1348500.yclients.ru/" class="btn" target="_blank" rel="noopener">Записаться онлайн</a>
+                <!-- ЗАМЕНИТЬ: ссылка на Max -->
+                <a href="#" class="link-max">Написать в Max</a>
+                <!-- ЗАМЕНИТЬ: реальный телефон -->
+                <a href="tel:+70000000000" class="link-max">+7 (000) 000-00-00</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <div class="section-label">Где нас найти</div>
+            <h2 class="section-title">Контакты</h2>
+            <div class="contacts-inner">
+                <div>
+                    <div class="contact-block">
+                        <strong>Адрес</strong>
+                        <p>Оренбург, ул. Карагандинская, 49/1<br>ТД «Вояж»</p>
+                    </div>
+                    <div class="contact-block">
+                        <strong>Часы работы</strong>
+                        <!-- ЗАМЕНИТЬ: реальные часы -->
+                        <p>Пн–Сб 9:00–20:00<br>Вс — выходной</p>
+                    </div>
+                    <div class="contact-block">
+                        <strong>Телефон</strong>
+                        <!-- ЗАМЕНИТЬ: реальный телефон -->
+                        <p><a href="tel:+70000000000">+7 (000) 000-00-00</a></p>
+                    </div>
+                    <div class="contact-block">
+                        <strong>Онлайн-запись</strong>
+                        <a href="https://n1348500.yclients.ru/" class="btn" target="_blank" rel="noopener">Записаться на приём</a>
+                    </div>
+                </div>
+                <div class="map-wrap">
+                    <iframe
+                        src="https://yandex.ru/map-widget/v1/?ll=55.155543%2C51.784616&z=16.99&pt=55.155543,51.784616,pm2rdm"
+                        loading="lazy"
+                        title="Карта: На ногтях, Оренбург"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-inner">
+            <a href="#" class="logo">На ногтях</a>
+            <div>
+                <!-- ЗАМЕНИТЬ: реальный телефон -->
+                <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+            </div>
+            <div>&copy; {{ year }} «На ногтях». Все права защищены.</div>
+        </div>
+    </footer>
+
+    <a href="https://n1348500.yclients.ru/" class="sticky-book" target="_blank" rel="noopener">Записаться</a>
+
+    <script>
+        // Вкладки услуг
+        document.querySelectorAll('.tab-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var tab = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+                document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+                btn.classList.add('active');
+                document.getElementById('tab-' + tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
+"""
+
+@app.route("/")
+def index():
+    return render_template_string(HTML_PAGE, year=datetime.now().year)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
