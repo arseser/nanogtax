@@ -41,8 +41,24 @@ HTML_PAGE = """
         .hero p { font-size:1rem; color:var(--muted); max-width:460px; margin-bottom:32px; }
         .hero-actions { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
         .link-max { font-size:0.85rem; color:var(--graphite); text-decoration:none; border-bottom:1px solid var(--muted); padding-bottom:2px; }
-        .hero-image { aspect-ratio:3/4; background:var(--marble); border-radius:var(--radius); overflow:hidden; }
-        .hero-image img { width:100%; height:100%; object-fit:cover; }
+        
+        /* Главное фото: тячется по высоте, вписывается целиком */
+        .hero-image { 
+            background: var(--marble); 
+            border-radius: var(--radius); 
+            overflow: hidden; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            min-height: 300px;
+        }
+        .hero-image img { 
+            width: 100%; 
+            height: auto; 
+            max-height: 600px; 
+            object-fit: contain; 
+        }
+        
         .facts { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--marble); margin-top:60px; }
         .fact { padding:24px 0; text-align:center; font-size:0.85rem; border-right:1px solid var(--marble); }
         .fact:last-child { border-right:none; }
@@ -54,8 +70,21 @@ HTML_PAGE = """
 
         .about { background:var(--offwhite); }
         .about-content { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-        .about-image { aspect-ratio:4/5; background:var(--marble); border-radius:var(--radius); overflow:hidden; }
-        .about-image img { width:100%; height:100%; object-fit:cover; }
+        .about-image { 
+            background: var(--marble); 
+            border-radius: var(--radius); 
+            overflow: hidden; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            min-height: 300px;
+        }
+        .about-image img { 
+            width: 100%; 
+            height: auto; 
+            max-height: 500px; 
+            object-fit: contain; 
+        }
         .about-text p { font-size:1rem; margin-bottom:16px; }
         .about-text p:last-of-type { margin-bottom:0; }
 
@@ -71,17 +100,20 @@ HTML_PAGE = """
         .tab-btn.active, .tab-btn:hover { background:var(--graphite); color:#fff; border-color:var(--graphite); }
         .tab-panel { display:none; }
         .tab-panel.active { display:block; }
+        
         .service-row { display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px dotted var(--marble); }
-        .service-thumb { flex:0 0 56px; width:56px; height:56px; background:var(--marble); border-radius:var(--radius); overflow:hidden; }
+        .service-thumb { flex:0 0 56px; width:56px; height:56px; background:var(--marble); border-radius:var(--radius); overflow:hidden; display:flex; align-items:center; justify-content:center; }
         .service-thumb img { width:100%; height:100%; object-fit:cover; }
+        
         .service-info { flex:1 1 auto; display:flex; flex-direction:column; }
         .service-info .name { font-weight:400; }
         .service-info .meta { color:var(--muted); font-size:0.8rem; font-weight:300; }
         .service-row .price { font-weight:600; white-space:nowrap; }
+        
         .complexes-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
         .complex-card { background:var(--white); border:1px solid var(--marble); border-radius:var(--radius); padding:26px 20px; position:relative; }
         .complex-card .badge { position:absolute; top:12px; right:12px; font-size:0.65rem; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
-        .complex-thumb { width:100%; aspect-ratio:4/3; background:var(--marble); border-radius:var(--radius); overflow:hidden; margin-bottom:14px; }
+        .complex-thumb { width:100%; aspect-ratio:4/3; background:var(--marble); border-radius:var(--radius); overflow:hidden; margin-bottom:14px; display:flex; align-items:center; justify-content:center; }
         .complex-thumb img { width:100%; height:100%; object-fit:cover; }
         .complex-card h4 { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:500; margin-bottom:10px; }
         .complex-card .desc { font-size:0.8rem; color:var(--muted); margin-bottom:16px; min-height:48px; }
@@ -91,7 +123,7 @@ HTML_PAGE = """
 
         .portfolio { background:var(--white); }
         .portfolio-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-        .portfolio-item { aspect-ratio:1/1; background:var(--marble); border-radius:var(--radius); overflow:hidden; }
+        .portfolio-item { aspect-ratio:1/1; background:var(--marble); border-radius:var(--radius); overflow:hidden; display:flex; align-items:center; justify-content:center; }
         .portfolio-item img { width:100%; height:100%; object-fit:cover; }
 
         .reviews { background:var(--offwhite); }
@@ -137,13 +169,13 @@ HTML_PAGE = """
             .hero-inner { grid-template-columns:1fr; gap:32px; }
             .hero { padding:60px 0 0; }
             .hero h1 { font-size:2.4rem; }
-            .hero-image { aspect-ratio:16/10; }
+            .hero-image { aspect-ratio:auto; } /* Отключаем фикс. пропорции на мобилке */
             .hero p { max-width:100%; }
             .facts { grid-template-columns:1fr; margin-top:40px; }
             .fact { border-right:none; border-bottom:1px solid var(--marble); padding:18px 0; }
             .fact:last-child { border-bottom:none; }
             .about-content { grid-template-columns:1fr; gap:32px; }
-            .about-image { aspect-ratio:16/10; }
+            .about-image { aspect-ratio:auto; } /* Отключаем фикс. пропорции на мобилке */
             .features-grid { grid-template-columns:1fr; gap:28px; }
             .complexes-grid { grid-template-columns:repeat(2,1fr); }
             .reviews-grid { grid-template-columns:1fr; }
