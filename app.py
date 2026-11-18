@@ -145,7 +145,6 @@ HTML_PAGE = """
 
         .sticky-book { display:none; position:fixed; bottom:0; left:0; right:0; background:var(--graphite); color:#fff; text-align:center; padding:14px; font-size:0.85rem; letter-spacing:1px; text-transform:uppercase; text-decoration:none; z-index:200; }
 
-        /* Лайтбокс */
         .lightbox { display:none; position:fixed; inset:0; background:rgba(20,20,20,0.92); z-index:1000; align-items:center; justify-content:center; padding:24px; cursor:zoom-out; }
         .lightbox.open { display:flex; }
         .lightbox img { max-width:95vw; max-height:92vh; object-fit:contain; border-radius:4px; box-shadow:0 20px 60px rgba(0,0,0,0.5); }
@@ -309,7 +308,6 @@ HTML_PAGE = """
                     <span class="price">1 600 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb" data-img="/static/man-gig.jpg"><img src="/static/man-gig.jpg" alt="Гигиенический маникюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Гигиенический маникюр</span>
                         <span class="meta">30 мин</span>
@@ -333,7 +331,6 @@ HTML_PAGE = """
                     <span class="price">1 650–2 000 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb" data-img="/static/man-muzh.jpg"><img src="/static/man-muzh.jpg" alt="Мужской маникюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Мужской маникюр</span>
                         <span class="meta">1 ч</span>
@@ -341,7 +338,6 @@ HTML_PAGE = """
                     <span class="price">700 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb" data-img="/static/man-snyatie.jpg"><img src="/static/man-snyatie.jpg" alt="Снятие покрытия" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Снятие покрытия</span>
                         <span class="meta">30 мин</span>
@@ -349,7 +345,6 @@ HTML_PAGE = """
                     <span class="price">200 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb" data-img="/static/man-snyatie-gig.jpg"><img src="/static/man-snyatie-gig.jpg" alt="Снятие покрытия и гигиенический маникюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Снятие покрытия + гигиенический маникюр</span>
                         <span class="meta">1 ч</span>
@@ -557,14 +552,12 @@ HTML_PAGE = """
 
     <a href="https://n1348500.yclients.ru/" class="sticky-book" target="_blank" rel="noopener">Записаться</a>
 
-    <!-- Лайтбокс -->
     <div class="lightbox" id="lightbox">
         <button class="close-btn" aria-label="Закрыть">&times;</button>
         <img src="" alt="Просмотр фото">
     </div>
 
     <script>
-        // Вкладки услуг
         document.querySelectorAll('.tab-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 var tab = btn.getAttribute('data-tab');
@@ -575,13 +568,11 @@ HTML_PAGE = """
             });
         });
 
-        // Лайтбокс
         var lightbox = document.getElementById('lightbox');
         var lightboxImg = lightbox.querySelector('img');
 
         document.querySelectorAll('[data-img]').forEach(function (el) {
-            el.addEventListener('click', function (e) {
-                // если внутри нет картинки (не загрузилась) — не открываем
+            el.addEventListener('click', function () {
                 var innerImg = el.querySelector('img');
                 if (innerImg && innerImg.style.display === 'none') return;
                 var src = el.getAttribute('data-img');
