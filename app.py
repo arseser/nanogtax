@@ -91,9 +91,6 @@ HTML_PAGE = """
         .complexes-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
         .complex-card { background:var(--white); border:1px solid var(--marble); border-radius:var(--radius); padding:20px; position:relative; }
         .complex-card .badge { position:absolute; top:12px; right:12px; font-size:0.65rem; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
-        .complex-thumb { width:100%; aspect-ratio:4/3; background:var(--marble); border-radius:var(--radius); overflow:hidden; margin-bottom:14px; cursor:pointer; }
-        .complex-thumb img { width:100%; height:100%; object-fit:cover; transition:transform 0.3s; }
-        .complex-thumb:hover img { transform:scale(1.05); }
         .complex-card h4 { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:500; margin-bottom:10px; }
         .complex-card .desc { font-size:0.8rem; color:var(--muted); margin-bottom:16px; min-height:48px; }
         .complex-card .price { font-weight:600; font-size:1.1rem; }
@@ -363,7 +360,6 @@ HTML_PAGE = """
 
             <div class="tab-panel" id="tab-pedicure">
                 <div class="service-row">
-                    <div class="service-thumb" data-img="/static/ped-uhod.jpg"><img src="/static/ped-uhod.jpg" alt="Аппаратный педикюр с уходом" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Аппаратный педикюр + уход</span>
                         <span class="meta">1 ч 30 мин</span>
@@ -371,7 +367,6 @@ HTML_PAGE = """
                     <span class="price">1 800 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb" data-img="/static/ped-pokrytie.jpg"><img src="/static/ped-pokrytie.jpg" alt="Педикюр с покрытием гель-лаком" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Аппаратный педикюр + покрытие гель-лаком</span>
                         <span class="meta">1 ч</span>
@@ -379,7 +374,6 @@ HTML_PAGE = """
                     <span class="price">2 100 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb" data-img="/static/ped-express.jpg"><img src="/static/ped-express.jpg" alt="Экспресс педикюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Экспресс педикюр</span>
                         <span class="meta">30 мин</span>
@@ -387,7 +381,6 @@ HTML_PAGE = """
                     <span class="price">1 200 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb" data-img="/static/ped-express-pokrytie.jpg"><img src="/static/ped-express-pokrytie.jpg" alt="Экспресс педикюр с покрытием" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Экспресс педикюр с покрытием гель-лак</span>
                         <span class="meta">45 мин</span>
@@ -395,7 +388,6 @@ HTML_PAGE = """
                     <span class="price">1 500 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb" data-img="/static/ped-muzh.jpg"><img src="/static/ped-muzh.jpg" alt="Мужской педикюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Мужской педикюр</span>
                         <span class="meta">1 ч</span>
@@ -403,7 +395,6 @@ HTML_PAGE = """
                     <span class="price">2 000 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb" data-img="/static/ped-snyatie.jpg"><img src="/static/ped-snyatie.jpg" alt="Снятие покрытия педикюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Снятие покрытия</span>
                         <span class="meta">20 мин</span>
@@ -411,7 +402,6 @@ HTML_PAGE = """
                     <span class="price">200 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb" data-img="/static/ped-snyatie-express.jpg"><img src="/static/ped-snyatie-express.jpg" alt="Снятие покрытия и экспресс педикюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Снятие покрытия + экспресс педикюр</span>
                         <span class="meta">45 мин</span>
@@ -423,26 +413,22 @@ HTML_PAGE = """
             <div class="tab-panel" id="tab-complex">
                 <div class="complexes-grid">
                     <div class="complex-card">
-                        <div class="complex-thumb" data-img="/static/cx-s.jpg"><img src="/static/cx-s.jpg" alt="Комплекс S" onerror="this.style.display='none'"></div>
                         <h4>S</h4>
                         <div class="desc">Маникюр + покрытие и педикюр пальчиков с покрытием</div>
                         <div class="price">3 100 ₽</div>
                     </div>
                     <div class="complex-card">
-                        <div class="complex-thumb" data-img="/static/cx-m.jpg"><img src="/static/cx-m.jpg" alt="Комплекс M" onerror="this.style.display='none'"></div>
                         <h4>M</h4>
                         <div class="desc">Моделирование и экспресс педикюр с покрытием</div>
                         <div class="price">3 300–3 500 ₽</div>
                     </div>
                     <div class="complex-card">
                         <span class="badge">Популярный</span>
-                        <div class="complex-thumb" data-img="/static/cx-l.jpg"><img src="/static/cx-l.jpg" alt="Комплекс L" onerror="this.style.display='none'"></div>
                         <h4>L</h4>
                         <div class="desc">Маникюр с укреплением и полный педикюр с покрытием</div>
                         <div class="price">3 700 ₽</div>
                     </div>
                     <div class="complex-card">
-                        <div class="complex-thumb" data-img="/static/cx-xl.jpg"><img src="/static/cx-xl.jpg" alt="Комплекс XL" onerror="this.style.display='none'"></div>
                         <h4>XL</h4>
                         <div class="desc">Моделирование и полный педикюр с покрытием</div>
                         <div class="price">3 900–4 100 ₽</div>
@@ -608,4 +594,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT"), 5000))
