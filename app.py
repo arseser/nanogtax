@@ -41,24 +41,11 @@ HTML_PAGE = """
         .hero p { font-size:1rem; color:var(--muted); max-width:460px; margin-bottom:32px; }
         .hero-actions { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
         .link-max { font-size:0.85rem; color:var(--graphite); text-decoration:none; border-bottom:1px solid var(--muted); padding-bottom:2px; }
-        
-        /* Главное фото: тячется по высоте, вписывается целиком */
-        .hero-image { 
-            background: var(--marble); 
-            border-radius: var(--radius); 
-            overflow: hidden; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            min-height: 300px;
-        }
-        .hero-image img { 
-            width: 100%; 
-            height: auto; 
-            max-height: 600px; 
-            object-fit: contain; 
-        }
-        
+
+        .hero-image { background:var(--marble); border-radius:var(--radius); overflow:hidden; display:flex; align-items:center; justify-content:center; min-height:320px; cursor:pointer; }
+        .hero-image img { width:100%; height:auto; max-height:560px; object-fit:contain; transition:transform 0.3s; }
+        .hero-image:hover img { transform:scale(1.02); }
+
         .facts { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--marble); margin-top:60px; }
         .fact { padding:24px 0; text-align:center; font-size:0.85rem; border-right:1px solid var(--marble); }
         .fact:last-child { border-right:none; }
@@ -70,21 +57,9 @@ HTML_PAGE = """
 
         .about { background:var(--offwhite); }
         .about-content { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-        .about-image { 
-            background: var(--marble); 
-            border-radius: var(--radius); 
-            overflow: hidden; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            min-height: 300px;
-        }
-        .about-image img { 
-            width: 100%; 
-            height: auto; 
-            max-height: 500px; 
-            object-fit: contain; 
-        }
+        .about-image { background:var(--marble); border-radius:var(--radius); overflow:hidden; display:flex; align-items:center; justify-content:center; min-height:320px; cursor:pointer; }
+        .about-image img { width:100%; height:auto; max-height:520px; object-fit:contain; transition:transform 0.3s; }
+        .about-image:hover img { transform:scale(1.02); }
         .about-text p { font-size:1rem; margin-bottom:16px; }
         .about-text p:last-of-type { margin-bottom:0; }
 
@@ -100,21 +75,25 @@ HTML_PAGE = """
         .tab-btn.active, .tab-btn:hover { background:var(--graphite); color:#fff; border-color:var(--graphite); }
         .tab-panel { display:none; }
         .tab-panel.active { display:block; }
-        
-        .service-row { display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px dotted var(--marble); }
-        .service-thumb { flex:0 0 56px; width:56px; height:56px; background:var(--marble); border-radius:var(--radius); overflow:hidden; display:flex; align-items:center; justify-content:center; }
-        .service-thumb img { width:100%; height:100%; object-fit:cover; }
-        
+
+        .service-row { display:flex; align-items:center; gap:18px; padding:16px 0; border-bottom:1px dotted var(--marble); }
+        .service-thumb { flex:0 0 84px; width:84px; height:84px; background:var(--marble); border-radius:var(--radius); overflow:hidden; cursor:pointer; position:relative; }
+        .service-thumb img { width:100%; height:100%; object-fit:cover; transition:transform 0.3s; }
+        .service-thumb:hover img { transform:scale(1.06); }
+        .service-thumb::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,0); transition:background 0.3s; }
+        .service-thumb:hover::after { background:rgba(0,0,0,0.06); }
+
         .service-info { flex:1 1 auto; display:flex; flex-direction:column; }
         .service-info .name { font-weight:400; }
         .service-info .meta { color:var(--muted); font-size:0.8rem; font-weight:300; }
         .service-row .price { font-weight:600; white-space:nowrap; }
-        
+
         .complexes-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-        .complex-card { background:var(--white); border:1px solid var(--marble); border-radius:var(--radius); padding:26px 20px; position:relative; }
+        .complex-card { background:var(--white); border:1px solid var(--marble); border-radius:var(--radius); padding:20px; position:relative; }
         .complex-card .badge { position:absolute; top:12px; right:12px; font-size:0.65rem; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
-        .complex-thumb { width:100%; aspect-ratio:4/3; background:var(--marble); border-radius:var(--radius); overflow:hidden; margin-bottom:14px; display:flex; align-items:center; justify-content:center; }
-        .complex-thumb img { width:100%; height:100%; object-fit:cover; }
+        .complex-thumb { width:100%; aspect-ratio:4/3; background:var(--marble); border-radius:var(--radius); overflow:hidden; margin-bottom:14px; cursor:pointer; }
+        .complex-thumb img { width:100%; height:100%; object-fit:cover; transition:transform 0.3s; }
+        .complex-thumb:hover img { transform:scale(1.05); }
         .complex-card h4 { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:500; margin-bottom:10px; }
         .complex-card .desc { font-size:0.8rem; color:var(--muted); margin-bottom:16px; min-height:48px; }
         .complex-card .price { font-weight:600; font-size:1.1rem; }
@@ -122,9 +101,10 @@ HTML_PAGE = """
         .services-cta .full-price { font-size:0.85rem; color:var(--graphite); text-decoration:none; border-bottom:1px solid var(--muted); padding-bottom:2px; }
 
         .portfolio { background:var(--white); }
-        .portfolio-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-        .portfolio-item { aspect-ratio:1/1; background:var(--marble); border-radius:var(--radius); overflow:hidden; display:flex; align-items:center; justify-content:center; }
-        .portfolio-item img { width:100%; height:100%; object-fit:cover; }
+        .portfolio-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+        .portfolio-item { aspect-ratio:4/3; background:var(--marble); border-radius:var(--radius); overflow:hidden; cursor:pointer; }
+        .portfolio-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.3s; }
+        .portfolio-item:hover img { transform:scale(1.04); }
 
         .reviews { background:var(--offwhite); }
         .reviews-rating { text-align:center; margin-bottom:40px; }
@@ -165,22 +145,27 @@ HTML_PAGE = """
 
         .sticky-book { display:none; position:fixed; bottom:0; left:0; right:0; background:var(--graphite); color:#fff; text-align:center; padding:14px; font-size:0.85rem; letter-spacing:1px; text-transform:uppercase; text-decoration:none; z-index:200; }
 
+        /* Лайтбокс */
+        .lightbox { display:none; position:fixed; inset:0; background:rgba(20,20,20,0.92); z-index:1000; align-items:center; justify-content:center; padding:24px; cursor:zoom-out; }
+        .lightbox.open { display:flex; }
+        .lightbox img { max-width:95vw; max-height:92vh; object-fit:contain; border-radius:4px; box-shadow:0 20px 60px rgba(0,0,0,0.5); }
+        .lightbox .close-btn { position:absolute; top:18px; right:22px; color:#fff; font-size:2rem; line-height:1; background:none; border:none; cursor:pointer; opacity:0.8; }
+        .lightbox .close-btn:hover { opacity:1; }
+
         @media (max-width:900px) {
             .hero-inner { grid-template-columns:1fr; gap:32px; }
             .hero { padding:60px 0 0; }
             .hero h1 { font-size:2.4rem; }
-            .hero-image { aspect-ratio:auto; } /* Отключаем фикс. пропорции на мобилке */
             .hero p { max-width:100%; }
             .facts { grid-template-columns:1fr; margin-top:40px; }
             .fact { border-right:none; border-bottom:1px solid var(--marble); padding:18px 0; }
             .fact:last-child { border-bottom:none; }
             .about-content { grid-template-columns:1fr; gap:32px; }
-            .about-image { aspect-ratio:auto; } /* Отключаем фикс. пропорции на мобилке */
             .features-grid { grid-template-columns:1fr; gap:28px; }
             .complexes-grid { grid-template-columns:repeat(2,1fr); }
             .reviews-grid { grid-template-columns:1fr; }
             .contacts-inner { grid-template-columns:1fr; gap:32px; }
-            .portfolio-grid { grid-template-columns:repeat(2,1fr); }
+            .portfolio-grid { grid-template-columns:1fr; }
             .map-wrap { aspect-ratio:4/3; }
             nav a:not(.btn) { display:none; }
             .header-phone { display:none; }
@@ -202,9 +187,8 @@ HTML_PAGE = """
             .section-title { font-size:1.8rem; }
             section { padding:50px 0; }
             .complexes-grid { grid-template-columns:1fr; }
-            .portfolio-grid { grid-template-columns:1fr; }
-            .service-row { gap:12px; }
-            .service-thumb { flex:0 0 48px; width:48px; height:48px; }
+            .service-row { gap:14px; }
+            .service-thumb { flex:0 0 72px; width:72px; height:72px; }
             .service-info .name { font-size:0.92rem; }
             .service-info .meta { font-size:0.75rem; }
             .service-row .price { font-size:0.9rem; }
@@ -250,7 +234,7 @@ HTML_PAGE = """
                         <a href="https://max.ru/u/f9LHodD0cOJ-bX6hYDR-apIXmyZo1_Ld9ZYwm9eiteKL6U75nrNiCPIacWo" class="link-max" target="_blank" rel="noopener">Написать в Max</a>
                     </div>
                 </div>
-                <div class="hero-image">
+                <div class="hero-image" data-img="/static/cabinet-hero.jpg">
                     <img src="/static/cabinet-hero.jpg" alt="Кабинет студии «На ногтях»" onerror="this.style.display='none'">
                 </div>
             </div>
@@ -267,7 +251,7 @@ HTML_PAGE = """
             <div class="section-label">О студии</div>
             <h2 class="section-title">Воздух, свет и скорость</h2>
             <div class="about-content">
-                <div class="about-image">
+                <div class="about-image" data-img="/static/cabinet-about.jpg">
                     <img src="/static/cabinet-about.jpg" alt="Кабинет студии «На ногтях»" onerror="this.style.display='none'">
                 </div>
                 <div class="about-text">
@@ -317,7 +301,7 @@ HTML_PAGE = """
 
             <div class="tab-panel active" id="tab-manicure">
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/man-ukrep.jpg" alt="Маникюр с укреплением гелем" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/man-ukrep.jpg"><img src="/static/man-ukrep.jpg" alt="Маникюр с укреплением гелем" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Маникюр + укрепление гелем</span>
                         <span class="meta">1 ч 30 мин · Комбинированный маникюр с укреплением гелем и покрытием гель-лак</span>
@@ -325,7 +309,7 @@ HTML_PAGE = """
                     <span class="price">1 600 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/man-gig.jpg" alt="Гигиенический маникюр" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/man-gig.jpg"><img src="/static/man-gig.jpg" alt="Гигиенический маникюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Гигиенический маникюр</span>
                         <span class="meta">30 мин</span>
@@ -333,7 +317,7 @@ HTML_PAGE = """
                     <span class="price">700–800 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/man-french.jpg" alt="Маникюр с френчем" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/man-french.jpg"><img src="/static/man-french.jpg" alt="Маникюр с френчем" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Маникюр + гель-лак + френч</span>
                         <span class="meta">1 ч 30 мин · Комбинированный маникюр, укрепление гелем, дизайн френч</span>
@@ -341,7 +325,7 @@ HTML_PAGE = """
                     <span class="price">1 800 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/man-design.jpg" alt="Маникюр с дизайном" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/man-design.jpg"><img src="/static/man-design.jpg" alt="Маникюр с дизайном" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Маникюр + покрытие + дизайн</span>
                         <span class="meta">1 ч 40 мин</span>
@@ -349,7 +333,7 @@ HTML_PAGE = """
                     <span class="price">1 650–2 000 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/man-muzh.jpg" alt="Мужской маникюр" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/man-muzh.jpg"><img src="/static/man-muzh.jpg" alt="Мужской маникюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Мужской маникюр</span>
                         <span class="meta">1 ч</span>
@@ -357,7 +341,7 @@ HTML_PAGE = """
                     <span class="price">700 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/man-snyatie.jpg" alt="Снятие покрытия" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/man-snyatie.jpg"><img src="/static/man-snyatie.jpg" alt="Снятие покрытия" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Снятие покрытия</span>
                         <span class="meta">30 мин</span>
@@ -365,7 +349,7 @@ HTML_PAGE = """
                     <span class="price">200 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/man-snyatie-gig.jpg" alt="Снятие покрытия и гигиенический маникюр" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/man-snyatie-gig.jpg"><img src="/static/man-snyatie-gig.jpg" alt="Снятие покрытия и гигиенический маникюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Снятие покрытия + гигиенический маникюр</span>
                         <span class="meta">1 ч</span>
@@ -373,7 +357,7 @@ HTML_PAGE = """
                     <span class="price">800 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/man-model.jpg" alt="Моделирование ногтей" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/man-model.jpg"><img src="/static/man-model.jpg" alt="Моделирование ногтей" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Моделирование (исправление клюющих и скрученных ногтей)</span>
                         <span class="meta">2 ч</span>
@@ -384,7 +368,7 @@ HTML_PAGE = """
 
             <div class="tab-panel" id="tab-pedicure">
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/ped-uhod.jpg" alt="Аппаратный педикюр с уходом" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/ped-uhod.jpg"><img src="/static/ped-uhod.jpg" alt="Аппаратный педикюр с уходом" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Аппаратный педикюр + уход</span>
                         <span class="meta">1 ч 30 мин</span>
@@ -392,7 +376,7 @@ HTML_PAGE = """
                     <span class="price">1 800 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/ped-pokrytie.jpg" alt="Педикюр с покрытием гель-лаком" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/ped-pokrytie.jpg"><img src="/static/ped-pokrytie.jpg" alt="Педикюр с покрытием гель-лаком" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Аппаратный педикюр + покрытие гель-лаком</span>
                         <span class="meta">1 ч</span>
@@ -400,7 +384,7 @@ HTML_PAGE = """
                     <span class="price">2 100 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/ped-express.jpg" alt="Экспресс педикюр" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/ped-express.jpg"><img src="/static/ped-express.jpg" alt="Экспресс педикюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Экспресс педикюр</span>
                         <span class="meta">30 мин</span>
@@ -408,7 +392,7 @@ HTML_PAGE = """
                     <span class="price">1 200 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/ped-express-pokrytie.jpg" alt="Экспресс педикюр с покрытием" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/ped-express-pokrytie.jpg"><img src="/static/ped-express-pokrytie.jpg" alt="Экспресс педикюр с покрытием" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Экспресс педикюр с покрытием гель-лак</span>
                         <span class="meta">45 мин</span>
@@ -416,7 +400,7 @@ HTML_PAGE = """
                     <span class="price">1 500 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/ped-muzh.jpg" alt="Мужской педикюр" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/ped-muzh.jpg"><img src="/static/ped-muzh.jpg" alt="Мужской педикюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Мужской педикюр</span>
                         <span class="meta">1 ч</span>
@@ -424,7 +408,7 @@ HTML_PAGE = """
                     <span class="price">2 000 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/ped-snyatie.jpg" alt="Снятие покрытия педикюр" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/ped-snyatie.jpg"><img src="/static/ped-snyatie.jpg" alt="Снятие покрытия педикюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Снятие покрытия</span>
                         <span class="meta">20 мин</span>
@@ -432,7 +416,7 @@ HTML_PAGE = """
                     <span class="price">200 ₽</span>
                 </div>
                 <div class="service-row">
-                    <div class="service-thumb"><img src="/static/ped-snyatie-express.jpg" alt="Снятие покрытия и экспресс педикюр" onerror="this.style.display='none'"></div>
+                    <div class="service-thumb" data-img="/static/ped-snyatie-express.jpg"><img src="/static/ped-snyatie-express.jpg" alt="Снятие покрытия и экспресс педикюр" onerror="this.style.display='none'"></div>
                     <div class="service-info">
                         <span class="name">Снятие покрытия + экспресс педикюр</span>
                         <span class="meta">45 мин</span>
@@ -444,26 +428,26 @@ HTML_PAGE = """
             <div class="tab-panel" id="tab-complex">
                 <div class="complexes-grid">
                     <div class="complex-card">
-                        <div class="complex-thumb"><img src="/static/cx-s.jpg" alt="Комплекс S" onerror="this.style.display='none'"></div>
+                        <div class="complex-thumb" data-img="/static/cx-s.jpg"><img src="/static/cx-s.jpg" alt="Комплекс S" onerror="this.style.display='none'"></div>
                         <h4>S</h4>
                         <div class="desc">Маникюр + покрытие и педикюр пальчиков с покрытием</div>
                         <div class="price">3 100 ₽</div>
                     </div>
                     <div class="complex-card">
-                        <div class="complex-thumb"><img src="/static/cx-m.jpg" alt="Комплекс M" onerror="this.style.display='none'"></div>
+                        <div class="complex-thumb" data-img="/static/cx-m.jpg"><img src="/static/cx-m.jpg" alt="Комплекс M" onerror="this.style.display='none'"></div>
                         <h4>M</h4>
                         <div class="desc">Моделирование и экспресс педикюр с покрытием</div>
                         <div class="price">3 300–3 500 ₽</div>
                     </div>
                     <div class="complex-card">
                         <span class="badge">Популярный</span>
-                        <div class="complex-thumb"><img src="/static/cx-l.jpg" alt="Комплекс L" onerror="this.style.display='none'"></div>
+                        <div class="complex-thumb" data-img="/static/cx-l.jpg"><img src="/static/cx-l.jpg" alt="Комплекс L" onerror="this.style.display='none'"></div>
                         <h4>L</h4>
                         <div class="desc">Маникюр с укреплением и полный педикюр с покрытием</div>
                         <div class="price">3 700 ₽</div>
                     </div>
                     <div class="complex-card">
-                        <div class="complex-thumb"><img src="/static/cx-xl.jpg" alt="Комплекс XL" onerror="this.style.display='none'"></div>
+                        <div class="complex-thumb" data-img="/static/cx-xl.jpg"><img src="/static/cx-xl.jpg" alt="Комплекс XL" onerror="this.style.display='none'"></div>
                         <h4>XL</h4>
                         <div class="desc">Моделирование и полный педикюр с покрытием</div>
                         <div class="price">3 900–4 100 ₽</div>
@@ -483,12 +467,12 @@ HTML_PAGE = """
             <div class="section-label">Галерея</div>
             <h2 class="section-title">Наши работы</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item"><img src="/static/work-1.jpg" alt="Работа 1" onerror="this.style.display='none'"></div>
-                <div class="portfolio-item"><img src="/static/work-2.jpg" alt="Работа 2" onerror="this.style.display='none'"></div>
-                <div class="portfolio-item"><img src="/static/work-3.jpg" alt="Работа 3" onerror="this.style.display='none'"></div>
-                <div class="portfolio-item"><img src="/static/work-4.jpg" alt="Работа 4" onerror="this.style.display='none'"></div>
-                <div class="portfolio-item"><img src="/static/work-5.jpg" alt="Работа 5" onerror="this.style.display='none'"></div>
-                <div class="portfolio-item"><img src="/static/work-6.jpg" alt="Работа 6" onerror="this.style.display='none'"></div>
+                <div class="portfolio-item" data-img="/static/work-1.jpg"><img src="/static/work-1.jpg" alt="Работа 1" onerror="this.style.display='none'"></div>
+                <div class="portfolio-item" data-img="/static/work-2.jpg"><img src="/static/work-2.jpg" alt="Работа 2" onerror="this.style.display='none'"></div>
+                <div class="portfolio-item" data-img="/static/work-3.jpg"><img src="/static/work-3.jpg" alt="Работа 3" onerror="this.style.display='none'"></div>
+                <div class="portfolio-item" data-img="/static/work-4.jpg"><img src="/static/work-4.jpg" alt="Работа 4" onerror="this.style.display='none'"></div>
+                <div class="portfolio-item" data-img="/static/work-5.jpg"><img src="/static/work-5.jpg" alt="Работа 5" onerror="this.style.display='none'"></div>
+                <div class="portfolio-item" data-img="/static/work-6.jpg"><img src="/static/work-6.jpg" alt="Работа 6" onerror="this.style.display='none'"></div>
             </div>
         </div>
     </section>
@@ -573,7 +557,14 @@ HTML_PAGE = """
 
     <a href="https://n1348500.yclients.ru/" class="sticky-book" target="_blank" rel="noopener">Записаться</a>
 
+    <!-- Лайтбокс -->
+    <div class="lightbox" id="lightbox">
+        <button class="close-btn" aria-label="Закрыть">&times;</button>
+        <img src="" alt="Просмотр фото">
+    </div>
+
     <script>
+        // Вкладки услуг
         document.querySelectorAll('.tab-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 var tab = btn.getAttribute('data-tab');
@@ -582,6 +573,37 @@ HTML_PAGE = """
                 btn.classList.add('active');
                 document.getElementById('tab-' + tab).classList.add('active');
             });
+        });
+
+        // Лайтбокс
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = lightbox.querySelector('img');
+
+        document.querySelectorAll('[data-img]').forEach(function (el) {
+            el.addEventListener('click', function (e) {
+                // если внутри нет картинки (не загрузилась) — не открываем
+                var innerImg = el.querySelector('img');
+                if (innerImg && innerImg.style.display === 'none') return;
+                var src = el.getAttribute('data-img');
+                if (!src) return;
+                lightboxImg.src = src;
+                lightbox.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            lightboxImg.src = '';
+            document.body.style.overflow = '';
+        }
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox || e.target.classList.contains('close-btn')) {
+                closeLightbox();
+            }
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
         });
     </script>
 </body>
